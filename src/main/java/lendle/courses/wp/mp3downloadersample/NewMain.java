@@ -66,10 +66,15 @@ public class NewMain {
                             tempFile, new FileDownloaderCallback() {
                         @Override
                         public void totalBytesDownloaded(long bytes, boolean finished, boolean failed) {
+                            double ratio=(bytes/FILE_SIZE)*100;
+                            progress.setProgress((int) ratio);
+                            if(finished){
+                                playFile(tempFile);
+                            }
                            //implement this
                            ////////////////
                         }
-                        protected double FILE_SIZE;
+                        
                     });
 
                 } catch (Exception ex) {
